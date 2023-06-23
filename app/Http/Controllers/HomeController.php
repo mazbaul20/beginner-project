@@ -11,8 +11,8 @@ class HomeController extends Controller
         return view('frontend.index');
     }
     public function HeroData(){
-        $heroData = DB::table('heroproperties')->select('*')->get();
-        return $heroData;
+        $heroDatas = DB::table('heroproperties')->select('*')->find(11);
+        return view('frontend.index',['heroDatas'=>$heroDatas]);
     }
     public function AboutData(){
         $aboutData = DB::table('abouts')->select('*')->get();

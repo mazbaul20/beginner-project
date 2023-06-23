@@ -13,16 +13,22 @@ Route::get('/project',[ProjectsController::class,'page'])->name('project.page');
 Route::get('/contact',[ContactController::class,'page'])->name('contact.page');
 
 // axaj call controller
-Route::get('/heroData',[HomeController::class,'HeroData']);
-Route::get('/aboutData',[HomeController::class,'AboutData']);
-Route::get('/socialData',[HomeController::class,'SocialData']);
+// Home-Controller all route
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/heroData','HeroData')->name('heroData');
+    Route::get('/aboutData','AboutData')->name('aboutData');
+    Route::get('/socialData','SocialData')->name('socialData');
+});
 
-Route::get('/experienceData',[ResumeController::class,'ExperienceData']);
-Route::get('/resumeLink',[ResumeController::class,'ResumeLink']);
-Route::get('/educationData',[ResumeController::class,'EducationData']);
-Route::get('/skillData',[ResumeController::class,'SkillData']);
-Route::get('/languageData',[ResumeController::class,'LanguageData']);
+// Resume-Controller all route
+Route::controller(ResumeController::class)->group(function(){
+    Route::get('/experienceData','ExperienceData')->name('experienceData');
+    Route::get('/resumeLink','ResumeLink')->name('resumeLink');
+    Route::get('/educationData','EducationData')->name('educationData');
+    Route::get('/skillData','SkillData')->name('skillData');
+    Route::get('/languageData','LanguageData')->name('languageData');
+});
 
-Route::get('/projectData',[ProjectsController::class,'ProjectData']);
-Route::post('/contactRequest',[ContactController::class,'ContactRequest']);
+Route::get('/projectData',[ProjectsController::class,'ProjectData'])->name('projectData');
+Route::post('/contactRequest',[ContactController::class,'ContactRequest'])->name('contactRequest');
 

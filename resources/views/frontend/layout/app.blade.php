@@ -14,7 +14,5 @@
         </main>
         <!-- Footer-->
         @include('frontend.layout.footer')
-
-    <script src="{{asset('js/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_js_bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>

@@ -7,9 +7,7 @@
                 <div class="text-center text-xxl-start">
                     <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">
                         {{-- Design &middot; Development &middot; Marketing --}}
-                        Desig Development Marketing
-                        {{-- {{ $heroDatas->keyLine }} --}}
-
+                        {{ $heroDatas->keyLine }}
                     </div></div>
                     <div class="fs-3 fw-light text-muted">I can help your business to</div>
                     <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Get online and grow fast</span></h1>

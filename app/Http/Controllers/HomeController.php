@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function page(){
-        return view('frontend.index');
+        return view('frontend.index',compact('heroDatas'));
     }
     public function HeroData(){
-        $heroDatas = DB::table('heroproperties')->select('*')->find(11);
+        $heroDatas = DB::table('heroproperties')->latest()->first();
         return view('frontend.index',['heroDatas'=>$heroDatas]);
     }
     public function AboutData(){

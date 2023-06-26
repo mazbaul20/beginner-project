@@ -8,19 +8,18 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function page(){
-        return view('frontend.index',compact('heroDatas'));
+        return view('frontend.index');
     }
     public function HeroData(){
-        $heroDatas = DB::table('heroproperties')->latest()->first();
-        return view('frontend.index',['heroDatas'=>$heroDatas]);
+        $heroDatas = DB::table('heroproperties')->first();
+        return $heroDatas;
     }
     public function AboutData(){
-        $aboutData = DB::table('abouts')->select('*')->get();
+        $aboutData = DB::table('abouts')->first();
         return $aboutData;
     }
     public function SocialData(){
-        $socialData = DB::table('socials')->select('*')->get();
-        return $socialData;
+        return DB::table('socials')->first();
     }
 }
 

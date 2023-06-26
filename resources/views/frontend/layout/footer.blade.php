@@ -12,5 +12,4 @@
         </div>
     </div>
 </footer>
-<script src="{{ asset('js/cdn.jsdelivr.net_npm_axios@1.1.2_dist_axios.min.js') }}"></script>
 <script src="{{ asset('js/cdn.jsdelivr.net_npm_bootstrap@5.2.3_dist_js_bootstrap.bundle.min.js') }}"></script>

@@ -8,8 +8,11 @@
 
             @include('frontend.layout.navbar')
             @include('frontend.layout.loader')
+            <div class="" id="content-div">
 
-            @yield('content')
+                @yield('content')
+
+            </div>
 
         </main>
         <!-- Footer-->

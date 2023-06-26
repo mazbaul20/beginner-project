@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             LanguagesSeeder::class,
             SocialsSeeder::class,
             ProjectsSeeder::class,
+            SocialsSeeder::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

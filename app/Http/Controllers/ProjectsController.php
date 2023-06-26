@@ -11,7 +11,7 @@ class ProjectsController extends Controller
         return view('frontend.pages.projects');
     }
     public function ProjectData(){
-        $projectData = DB::table('projects')->select('*')->get();
+        $projectData = DB::table('projects')->get();
         return $projectData;
     }
 }

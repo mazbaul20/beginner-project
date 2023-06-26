@@ -13,6 +13,6 @@ class ExperiencesSeeder extends Seeder
      */
     public function run(): void
     {
-        experiences::factory()->create();
+        experiences::factory(5)->create();
     }
 }

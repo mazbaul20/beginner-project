@@ -11,23 +11,23 @@ class ResumeController extends Controller
         return view('frontend.pages.resume');
     }
     public function ExperienceData(){
-        $experienceData = DB::table('experiences')->select('*')->get();
+        $experienceData = DB::table('experiences')->get();
         return $experienceData;
     }
     public function ResumeLink(){
-        $resumeLink = DB::table('resumes')->select('*')->get();
+        $resumeLink = DB::table('resumes')->first();
         return $resumeLink;
     }
     public function EducationData(){
-        $educationData = DB::table('educations')->select('*')->get();
+        $educationData = DB::table('educations')->get();
         return $educationData;
     }
     public function SkillData(){
-        $skillData = DB::table('skills')->select('*')->get();
+        $skillData = DB::table('skills')->get();
         return $skillData;
     }
     public function LanguageData(){
-        $languageData = DB::table('languages')->select('*')->get();
+        $languageData = DB::table('languages')->get();
         return $languageData;
     }
 }

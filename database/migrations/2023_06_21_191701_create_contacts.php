@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('fullName',100);
             $table->string('email',50);
             $table->string('phone',50);
-            $table->text('message');
+            $table->text('message')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

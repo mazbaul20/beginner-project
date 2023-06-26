@@ -27,4 +27,8 @@
         </div>
     </div>
 
+    <script>
+        // active page
+        document.getElementById('resume').classList.add('active');
+    </script>
 @endsection

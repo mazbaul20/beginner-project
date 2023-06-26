@@ -6,11 +6,11 @@
     </div>
     <div class="row gx-5 justify-content-center">
         <div class="col-lg-8 col-xl-6">
-
-            <form id="contactForm">
+            <!-- action="{{ route('contactRequest') }}" -->
+            <form id="contactForm" >
                 <!-- Name input-->
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="name" type="text" placeholder="Enter your name..."/>
+                    <input class="form-control" id="name" name="name" type="text" placeholder="Enter your name..."/>
                     <label for="name">Full name</label>
                 </div>
                 <!-- Email address input-->
@@ -34,3 +34,52 @@
         </div>
     </div>
 </div>
+
+<script>
+    // active page
+    document.getElementById('contact').classList.add('active');
+
+    let contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit',async(event)=>{
+        event.preventDefault();
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let phone = document.getElementById('phone').value;
+        let message = document.getElementById('message').value;
+
+        if(name.length===0){
+            alert("Name is Required");
+        }else if(email.length===0){
+            alert("Email is Required");
+        }else if(phone.length===0){
+            alert('Phone is Required');
+        }else{
+            let formData = {
+                'fullName':name,
+                'email':email,
+                'phone':phone,
+                'message':message,
+            }
+            let URL = "/contactRequest";
+
+            // show loader
+            document.getElementById('loading-div').classList.remove('d-none');
+            document.getElementById('content-div').classList.add('d-none');
+
+            let result = await axios.post(URL,formData);
+
+            // hide loader
+            document.getElementById('loading-div').classList.add('d-none');
+            document.getElementById('content-div').classList.remove('d-none');
+
+            if(result.status===200 && result.data===1){
+                alert('Your request has been submitted successfully');
+                contactForm.reset();
+            }else{
+                alert('Something went wrong!');
+            }
+
+        }
+
+    });
+</script>

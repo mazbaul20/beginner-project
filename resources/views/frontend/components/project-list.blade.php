@@ -4,32 +4,50 @@
             <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
         </div>
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-11 col-xl-9 col-xxl-8">
+            <div id="project-list" class="col-lg-11 col-xl-9 col-xxl-8">
                 <!-- Project Card 1-->
-                <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
-                    <div class="card-body p-0">
-                        <div class="d-flex align-items-center">
-                            <div class="p-5">
-                                <h2 class="fw-bolder">Project Name 1</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
-                            </div>
-                            <img class="img-fluid" src="{{ asset('assets/300x400.webp') }}" alt="..." />
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Card 2-->
-                <div class="card overflow-hidden shadow rounded-4 border-0">
-                    <div class="card-body p-0">
-                        <div class="d-flex align-items-center">
-                            <div class="p-5">
-                                <h2 class="fw-bolder">Project Name 2</h2>
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius at enim eum illum aperiam placeat esse? Mollitia omnis minima saepe recusandae libero, iste ad asperiores! Explicabo commodi quo itaque! Ipsam!</p>
-                            </div>
-                            <img class="img-fluid" src="{{ asset('assets/300x400.webp') }}" alt="..." />
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    // active page
+    document.getElementById('project').classList.add('active');
+
+    // axaj call, data fetching
+    GetProjectList()
+    async function GetProjectList() {
+
+        try {
+            let URL = "/projectData";
+            document.getElementById('loading-div').classList.remove('d-none');
+            document.getElementById('content-div').classList.add('d-none');
+
+            const response = await axios.get(URL);
+
+            document.getElementById('loading-div').classList.add('d-none');
+            document.getElementById('content-div').classList.remove('d-none');
+
+            response.data.forEach((item)=>{
+                document.getElementById('project-list').innerHTML+=(`
+                    <div  class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="p-5">
+                                    <h2 class="fw-bolder">${item['title']}</h2>
+                                    <p>${item['details']}</p>
+                                    <a class="text-decoration-none" target="_blank" href="${item['previewLink']}">View Project</a>
+                                </div>
+                                <img class="img-fluid w-50%" src="${item['thumbnailLink']}" alt="..." />
+                            </div>
+                        </div>
+                    </div>
+                `);
+            });
+        } catch (error) {
+            alert(error);
+        }
+    }
+</script>

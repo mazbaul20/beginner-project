@@ -28,6 +28,6 @@ class contactsSeeder extends Seeder
         //         'message' => 'This is a demo message two'
         //     ]
         // ]);
-        contacts::factory(10)->create();
+        contacts::factory(5)->create();
     }
 }

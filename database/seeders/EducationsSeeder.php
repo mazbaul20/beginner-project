@@ -13,6 +13,6 @@ class EducationsSeeder extends Seeder
      */
     public function run(): void
     {
-        Educations::factory(10)->create();
+        Educations::factory(5)->create();
     }
 }

@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function page(){
-        return view('frontend.index');
+        $seo = DB::table('seoproperties')->where('pageName','home')->first();
+        return view('frontend.index',['seo'=>$seo]);
     }
     public function HeroData(){
         $heroDatas = DB::table('heroproperties')->first();

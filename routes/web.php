@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\ResumeController;
@@ -32,3 +33,5 @@ Route::controller(ResumeController::class)->group(function(){
 Route::get('/projectData',[ProjectsController::class,'ProjectData'])->name('projectData');
 Route::post('/contactRequest',[ContactController::class,'ContactRequest'])->name('contactRequest');
 
+// backend
+Route::get('/dashboard',[DashboardController::class,'Dashboard']);

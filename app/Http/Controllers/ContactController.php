@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 class ContactController extends Controller
 {
     public function page(){
-        return view('frontend.pages.contact');
+        $seo = DB::table('seoproperties')->where('pageName','contact')->first();
+        return view('frontend.pages.contact',compact('seo'));
     }
     public function ContactRequest(Request $request){
         $insertData = DB::table('contacts')->insert($request->input());

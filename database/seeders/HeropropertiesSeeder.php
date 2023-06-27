@@ -13,6 +13,6 @@ class HeropropertiesSeeder extends Seeder
      */
     public function run(): void
     {
-        Heroproperties::factory(10)->create();
+        Heroproperties::factory(5)->create();
     }
 }

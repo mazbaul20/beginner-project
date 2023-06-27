@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\DB;
 class ResumeController extends Controller
 {
     public function page(){
-        return view('frontend.pages.resume');
+        $seo = DB::table('seoproperties')->where('pageName','resume')->first();
+        return view('frontend.pages.resume',compact('seo'));
     }
     public function ExperienceData(){
         $experienceData = DB::table('experiences')->get();

@@ -13,6 +13,6 @@ class LanguagesSeeder extends Seeder
      */
     public function run(): void
     {
-        languages::factory(10)->create();
+        languages::factory(5)->create();
     }
 }

@@ -13,6 +13,6 @@ class ResumesSeeder extends Seeder
      */
     public function run(): void
     {
-        resumes::factory(10)->create();
+        resumes::factory(5)->create();
     }
 }

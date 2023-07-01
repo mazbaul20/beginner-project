@@ -13,16 +13,19 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            seoproperties::class,
             contactsSeeder::class,
             AboutsSeeder::class,
             EducationsSeeder::class,
             HeropropertiesSeeder::class,
             ResumesSeeder::class,
+            ExperiencesSeeder::class,
             SkillsSeeder::class,
             LanguagesSeeder::class,
             SocialsSeeder::class,
             ProjectsSeeder::class,
             SocialsSeeder::class,
+            AdminLoginInfo::class,
         ]);
         // \App\Models\User::factory(10)->create();
 

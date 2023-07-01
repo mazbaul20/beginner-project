@@ -14,20 +14,21 @@ class contactsSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('contacts')->insert([
-        //     [
-        //         'fullName' => 'Touhidul islam',
-        //         'email' => 'touhidul@gmail.com',
-        //         'phone' => '01776286319',
-        //         'message' => 'This is a demo message'
-        //     ],
-        //     [
-        //         'fullName' => 'Hadiul islam',
-        //         'email' => 'hadiul@gmail.com',
-        //         'phone' => '01776286621',
-        //         'message' => 'This is a demo message two'
-        //     ]
-        // ]);
-        contacts::factory(5)->create();
+        // contacts::factory(5)->create();
+        DB::table('contacts')->insert([
+            [
+                'fullName' => 'Touhidul islam',
+                'email' => 'touhidul@gmail.com',
+                'phone' => '01776286319',
+                'message' => 'This is a demo message'
+            ],
+            [
+                'fullName' => 'Hadiul islam',
+                'email' => 'hadiul@gmail.com',
+                'phone' => '01776286621',
+                'message' => 'This is a demo message two'
+            ]
+        ]);
+
     }
 }

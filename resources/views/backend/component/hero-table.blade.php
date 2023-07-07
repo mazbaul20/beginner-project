@@ -1,4 +1,7 @@
 <div class="m-5">
+    <a href="{{ route('admin.Hero-properties.create') }}">
+        <button class="btn btn-primary">Create</button>
+    </a>
     <table class="table">
         <thead>
             <tr>
@@ -24,10 +27,15 @@
                 </td>
                 <td style="width:150px">
                     <a class="btn btn-small btn-primary" href="{{ route('admin.Hero-properties.edit',$data->id ) }}">Edit</a>
-                    <a class="btn btn-small btn-danger" href="#">Delete</a>
+
+                    <form class="d-inline-block" action="{{ route('admin.Hero-properties.delete',$data->id)}}" id="delete" method="POST" onsubmit="return  confirm('Do you want to delete?')">
+                        @method('DELETE')
+                        @csrf
+                        <input type="hidden" name="id" value="{{ $data->id }}">
+                        <button class="btn btn-small btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
-
         </tbody>
 
     @endforeach

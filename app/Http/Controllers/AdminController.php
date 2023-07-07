@@ -49,4 +49,31 @@ class AdminController extends Controller
         );
         return redirect()->route('admin.Hero-properties')->with($notification);
     }// End method
+
+    public function AdminHeroPropertiesDelete(Request $request){
+        DB::table('heroproperties')->where('id','=',$request->id)->delete();
+        $notification  = array(
+            'message' => 'Data Updated Successfully',// your message
+            'alert-type' => 'success' // alert type
+        );
+        return redirect()->route('admin.Hero-properties.delete')->with($notification);
+    }// End method
+    public function AdminHeroPropertiesCreate(){
+        return view('backend.component.create-hero');
+    }// End method
+    public function AdminHeroPropertiesStore(Request $request){
+        $request->validate([
+            'keyLine'=>'required|string',
+            'title'=>'required|string',
+            'short_title'=>'required|string',
+            'img'=>'required|string',
+        ]);
+        DB::table('heroproperties')->insert([
+            'keyLine'=>$request->keyLine,
+            'title'=>$request->title,
+            'short_title'=>$request->short_title,
+            'img'=>$request->img,
+        ]);
+        return redirect()->route('admin.Hero-properties');
+    }// End method
 }

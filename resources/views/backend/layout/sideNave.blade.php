@@ -22,11 +22,11 @@
                                 Hero-properties
                             </a>
 
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <a class="nav-link collapsed" id="abouts" href="{{ route('admin.abouts') }}">
                                 Abouts
                             </a>
 
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <a class="nav-link collapsed" href="{{ route('admin.social-links') }}" id="social">
                                 socials-link
                             </a>
                         </nav>
@@ -35,23 +35,23 @@
 
                 <section>
                     <!--Resume page-->
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#Resume" aria-expanded="false" aria-controls="Resume">
+                    <a class="nav-link collapsed" id="Resume" href="#" data-bs-toggle="collapse" data-bs-target="#Resume" aria-expanded="false" aria-controls="Resume">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Resume
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
                     <div class="collapse" id="Resume" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <a class="nav-link collapsed" id="experience" href="{{ route('admin.experience') }}">
                                 Experience
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <a class="nav-link collapsed" id="education" href="{{ route('admin.educations')}}">
                                 Education
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <a class="nav-link collapsed" id="skills" href="{{ route('admin.skill') }}" >
                                 Professional-Skills
                             </a>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#" aria-expanded="false" aria-controls="pagesCollapseError">
+                            <a class="nav-link collapsed" id="language" href="{{ route('admin.language') }}">
                                 Languages
                             </a>
                         </nav>
@@ -60,7 +60,7 @@
 
                 <section>
                     <!--Projects page-->
-                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#Projects" aria-expanded="false" aria-controls="Resume">
+                    <a class="nav-link collapsed" href="{{ route('admin.project') }}" id="project">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         Projects
                     </a>

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProjectsController;
 use App\Http\Controllers\backend\AboutsController;
 use App\Http\Controllers\backend\SkillsController;
 use App\Http\Controllers\backend\ProjectController;
@@ -13,6 +14,8 @@ use App\Http\Controllers\backend\LanguageController;
 use App\Http\Controllers\backend\EducationsController;
 use App\Http\Controllers\backend\ExperienceController;
 use App\Http\Controllers\backend\SocialLinkController;
+use App\Http\Controllers\backend\SEOPropertiesController;
+use App\Http\Controllers\backend\Backend_ContactController;
 
 // start auth route
 // Route::get('/', function () {
@@ -137,6 +140,20 @@ Route::middleware(['auth','admin_role:admin'])->group(function(){
         Route::get('/admin/dashboard/project/edit/{id}','show')->name('admin.project.edit');
         Route::post('/admin/dashboard/project/update','update')->name('admin.project.update');
         Route::delete('/admin/dashboard/project/delete','destroy')->name('admin.project.delete');
+    });
+    // Contact
+    Route::controller(Backend_ContactController::class)->group(function(){
+        Route::get('/admin/dashboard/contact','index')->name('admin.contact');
+        Route::delete('/admin/dashboard/contact/delete','destroy')->name('admin.contact.delete');
+    });
+    // SEO-Properties
+    Route::controller(SEOPropertiesController::class)->group(function(){
+        Route::get('/admin/dashboard/seoProperty','index')->name('admin.seoProperty');
+        Route::get('/admin/dashboard/seoProperty/create','create')->name('admin.seoProperty.create');
+        Route::post('/admin/dashboard/seoProperty/store','store')->name('admin.seoProperty.store');
+        Route::get('/admin/dashboard/seoProperty/edit/{id}','show')->name('admin.seoProperty.edit');
+        Route::post('/admin/dashboard/seoProperty/update','update')->name('admin.seoProperty.update');
+        Route::delete('/admin/dashboard/seoProperty/delete','destroy')->name('admin.seoProperty.delete');
     });
 });
 

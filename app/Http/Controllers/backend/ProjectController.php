@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProjectController extends Controller
 {
@@ -30,15 +31,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('projects')->insert([
+            'title' => $request->title,
+            'previewLink' => $request->previewLink,
+            'thumbnailLink' => $request->thumbnailLink,
+            'details' => $request->details
+        ]);
+        Toastr::success('Project Data Created Successful', 'Create', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('admin.project');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $project = DB::table('projects')->find($request->id);
+        return view('backend.component.edit_project',compact('project'));
     }
 
     /**
@@ -52,16 +61,25 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('projects')->where('id',$request->id)->update([
+            'title'=>$request->title,
+            'previewLink'=>$request->previewLink,
+            'thumbnailLink'=>$request->thumbnailLink,
+            'details'=>$request->details
+        ]);
+        Toastr::success('Project Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('admin.project');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        DB::table('projects')->where('id','=',$request->id)->delete();
+        Toastr::warning('Project Data Deleted Successful', 'Delete', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('admin.project');
     }
 }

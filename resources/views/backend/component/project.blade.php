@@ -26,9 +26,9 @@
                 </td>
                 <td>{{ $project->details }}</td>
                 <td style="width:150px">
-                    <a class="btn btn-small btn-primary" href="{{ route('admin.Hero-properties.edit',$project->id ) }}">Edit</a>
+                    <a class="btn btn-small btn-primary" href="{{ route('admin.project.edit',$project->id ) }}">Edit</a>
 
-                    <form class="d-inline-block" action="{{ route('admin.Hero-properties.delete',$project->id)}}" id="delete" method="POST" onsubmit="return  confirm('Do you want to delete?')">
+                    <form class="d-inline-block" action="{{ route('admin.project.delete',$project->id)}}" id="delete" method="POST" onsubmit="return  confirm('Do you want to delete?')">
                         @method('DELETE')
                         @csrf
                         <input type="hidden" name="id" value="{{ $project->id }}">

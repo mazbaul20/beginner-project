@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class LanguageController extends Controller
 {
@@ -33,6 +34,7 @@ class LanguageController extends Controller
         DB::table('languages')->insert([
             'name'=>$request->name
         ]);
+        Toastr::success('Data Created Successful', 'Create', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.language');
     }
 
@@ -61,6 +63,7 @@ class LanguageController extends Controller
         DB::table('languages')->where('id',$request->id)->update([
             'name'=>$request->name
         ]);
+        Toastr::success('Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.language');
     }
 
@@ -70,6 +73,7 @@ class LanguageController extends Controller
     public function destroy(Request $request)
     {
         DB::table('languages')->where('id','=',$request->id)->delete();
+        Toastr::warning('Data Deleted Successful', 'Delete', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.language');
     }
 }

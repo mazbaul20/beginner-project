@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -43,20 +44,14 @@ class AdminController extends Controller
             'short_title'=>$request->short_title,
             'img'=>$request->img,
         ]);
-        $notification  = array(
-            'message' => 'Data Updated Successfully',// your message
-            'alert-type' => 'success' // alert type
-        );
-        return redirect()->route('admin.Hero-properties')->with($notification);
+        Toastr::success('Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('admin.Hero-properties');
     }// End method
 
     public function AdminHeroPropertiesDelete(Request $request){
         DB::table('heroproperties')->where('id','=',$request->id)->delete();
-        $notification  = array(
-            'message' => 'Data Updated Successfully',// your message
-            'alert-type' => 'success' // alert type
-        );
-        return redirect()->route('admin.Hero-properties.delete')->with($notification);
+        Toastr::warning('Data Deleted Successful', 'Delete', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('admin.Hero-properties.delete');
     }// End method
     public function AdminHeroPropertiesCreate(){
         return view('backend.component.create-hero');
@@ -74,6 +69,7 @@ class AdminController extends Controller
             'short_title'=>$request->short_title,
             'img'=>$request->img,
         ]);
+        Toastr::success('Data Created Successful', 'Create', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.Hero-properties');
     }// End method
 }

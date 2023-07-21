@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\backend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SEOPropertiesController extends Controller
 {
@@ -12,7 +14,8 @@ class SEOPropertiesController extends Controller
      */
     public function index()
     {
-        //
+        $seoproperties = DB::table('seoproperties')->get();
+        return view('backend.pages.SEOProperty',compact('seoproperties'));
     }
 
     /**
@@ -34,9 +37,10 @@ class SEOPropertiesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request)
     {
-        //
+        $seoProterty = DB::table('seoproperties')->find($request->id);
+        return view('backend.component.edit_seoProperty',compact('seoProterty'));
     }
 
     /**
@@ -50,9 +54,21 @@ class SEOPropertiesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        DB::table('seoproperties')->where('id',$request->input('id'))->update([
+            'pageName'=>$request->input('pageName'),
+            'title'=>$request->input('title'),
+            'keywords'=>$request->input('keywords'),
+            'description'=>$request->input('description'),
+            'ogSiteName'=>$request->input('ogSiteName'),
+            'ogUrl'=>$request->input('ogUrl'),
+            'ogTitle'=>$request->input('ogTitle'),
+            'ogDescription'=>$request->input('ogDescription'),
+            'ogImage'=>$request->input('ogImage'),
+        ]);
+        Toastr::success('SEO-Property Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
+        return redirect()->route('admin.seoProperty');
     }
 
     /**

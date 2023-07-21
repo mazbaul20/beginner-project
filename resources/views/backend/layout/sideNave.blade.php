@@ -75,7 +75,7 @@
                 </section>
                 <section>
                     <!--Contact page-->
-                    <a class="nav-link collapsed" href="#">
+                    <a class="nav-link collapsed" href="{{ route('admin.seoProperty') }}" id="seoproperties">
                         <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                         SEO-Properties
                     </a>

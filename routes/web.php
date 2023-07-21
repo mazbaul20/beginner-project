@@ -69,12 +69,15 @@ Route::middleware(['auth','admin_role:admin'])->group(function(){
     Route::get('/admin/logout',[AdminController::class,'AdminLogout'])->name('admin.logout');
     
     // Home Hero-properties
-    Route::get('/admin/dashboard/Hero-properties',[AdminController::class,'AdminHeroProperties'])->name('admin.Hero-properties');
-    Route::get('/admin/dashboard/Hero-properties/create',[AdminController::class,'AdminHeroPropertiesCreate'])->name('admin.Hero-properties.create');
-    Route::post('/admin/dashboard/Hero-properties/store',[AdminController::class,'AdminHeroPropertiesStore'])->name('admin.Hero-properties.store');
-    Route::get('/admin/dashboard/Hero-properties/{id}',[AdminController::class,'AdminHeroPropertiesEdit'])->name('admin.Hero-properties.edit');
-    Route::post('/admin/dashboard/Hero-properties/update',[AdminController::class,'AdminHeroPropertiesUpdate'])->name('admin.Hero-properties.update');
-    Route::delete('/admin/dashboard/Hero-properties',[AdminController::class,'AdminHeroPropertiesDelete'])->name('admin.Hero-properties.delete');
+    Route::controller(AdminController::class)->group(function(){
+        Route::get('/admin/dashboard/Hero-properties','AdminHeroProperties')->name('admin.Hero-properties');
+        Route::get('/admin/dashboard/Hero-properties/create',[AdminController::class,'AdminHeroPropertiesCreate'])->name('admin.Hero-properties.create');
+        Route::post('/admin/dashboard/Hero-properties/store',[AdminController::class,'AdminHeroPropertiesStore'])->name('admin.Hero-properties.store');
+        Route::get('/admin/dashboard/Hero-properties/{id}',[AdminController::class,'AdminHeroPropertiesEdit'])->name('admin.Hero-properties.edit');
+        Route::post('/admin/dashboard/Hero-properties/update',[AdminController::class,'AdminHeroPropertiesUpdate'])->name('admin.Hero-properties.update');
+        Route::delete('/admin/dashboard/Hero-properties',[AdminController::class,'AdminHeroPropertiesDelete'])->name('admin.Hero-properties.delete');
+    });
+    
 
     // Home abouts
     Route::controller(AboutsController::class)->group(function(){
@@ -149,11 +152,8 @@ Route::middleware(['auth','admin_role:admin'])->group(function(){
     // SEO-Properties
     Route::controller(SEOPropertiesController::class)->group(function(){
         Route::get('/admin/dashboard/seoProperty','index')->name('admin.seoProperty');
-        Route::get('/admin/dashboard/seoProperty/create','create')->name('admin.seoProperty.create');
-        Route::post('/admin/dashboard/seoProperty/store','store')->name('admin.seoProperty.store');
         Route::get('/admin/dashboard/seoProperty/edit/{id}','show')->name('admin.seoProperty.edit');
         Route::post('/admin/dashboard/seoProperty/update','update')->name('admin.seoProperty.update');
-        Route::delete('/admin/dashboard/seoProperty/delete','destroy')->name('admin.seoProperty.delete');
     });
 });
 

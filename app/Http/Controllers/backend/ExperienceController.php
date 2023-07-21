@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ExperienceController extends Controller
 {
@@ -36,6 +37,7 @@ class ExperienceController extends Controller
             'designation'   => $request->designation,
             'details'       => $request->details,
         ]);
+        Toastr::success('Data Created Successful', 'Create', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.experience');
     }
 
@@ -74,6 +76,7 @@ class ExperienceController extends Controller
             'designation' => $request->designation,
             'details' => $request->details,
         ]);
+        Toastr::success('Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.experience');
     }
 
@@ -83,6 +86,7 @@ class ExperienceController extends Controller
     public function destroy(Request $request)
     {
         DB::table('experiences')->where('id','=',$request->id)->delete();
+        Toastr::warning('Data Deleted Successful', 'Delete', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.experience');
     }
 }

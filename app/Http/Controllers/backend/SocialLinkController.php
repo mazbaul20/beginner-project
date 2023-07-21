@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class SocialLinkController extends Controller
 {
@@ -40,6 +41,7 @@ class SocialLinkController extends Controller
             'githubLink'=>$request->githubLink,
             'linkdinLink'=>$request->linkdinLink,
         ]);
+        Toastr::success('Data Created Successful', 'Create', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.social-links');
     }
 
@@ -76,6 +78,7 @@ class SocialLinkController extends Controller
             'githubLink'=>$request->githubLink,
             'linkdinLink'=>$request->linkdinLink,
         ]);
+        Toastr::success('Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.social-links');
     }
 
@@ -85,6 +88,7 @@ class SocialLinkController extends Controller
     public function destroy(Request $request)
     {
         DB::table('socials')->where('id','=',$request->id)->delete();
+        Toastr::warning('Data Deleted Successful', 'Delete', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.social-links');
     }
 }

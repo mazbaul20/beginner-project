@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 
 class AboutsController extends Controller
 {
@@ -38,6 +39,7 @@ class AboutsController extends Controller
             'title'=>$request->title,
             'details'=>$request->details,
         ]);
+        Toastr::success('Data Created Successful', 'Create', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.abouts');
     }
 
@@ -72,6 +74,7 @@ class AboutsController extends Controller
             'title'=>$request->title,
             'details'=>$request->details,
         ]);
+        Toastr::success('Data Updated Successful', 'Update', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.abouts');
     }
 
@@ -82,6 +85,7 @@ class AboutsController extends Controller
     {
         $id = $request->id;
         DB::table('abouts')->where('id','=',$id)->delete();
+        Toastr::warning('Data Deleted Successful', 'Delete', ["positionClass" => "toast-top-center"]);
         return redirect()->route('admin.abouts');
     }
 }
